@@ -17,7 +17,7 @@ public class KafkaProducerConfig {
 
     @Bean
     public OrderProducer<OrderDTO> kafkaProducer() {
-        return new OrderProducer<>(kafkaTemplate, "new-order");
+        return new OrderProducer<>(kafkaTemplate, "order-status-updates");
     }
 
 }
