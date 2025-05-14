@@ -37,6 +37,7 @@ public class OrderPreparingService {
                     OrderDTO order = queue.take();
                     processOrder(order);
                 } catch (InterruptedException e) {
+                    System.out.println("erro: "+e.getMessage());
                     Thread.currentThread().interrupt();
                     break;
                 }
@@ -50,12 +51,12 @@ public class OrderPreparingService {
 
     private void processOrder(OrderDTO order) {
         try {
-            Thread.sleep(15000L);
+            Thread.sleep(5000L);
 
             order.setStatus("PREPARING");
             updateOrderStatus(order);
 
-            int delaySeconds = 10 + random.nextInt(41);
+            int delaySeconds = 10 + random.nextInt(31);
             Thread.sleep(delaySeconds * 1000L);
 
             order.setStatus("PREPARED");
