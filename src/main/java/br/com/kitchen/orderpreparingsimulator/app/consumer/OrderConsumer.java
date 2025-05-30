@@ -21,6 +21,7 @@ public class OrderConsumer {
     public void listen(String strOrder) {
         try {
             OrderDTO orderDTO = objectMapper.readValue(strOrder, OrderDTO.class);
+            System.out.println("Novo pedido: "+orderDTO.toString());
             if(orderDTO.getId() != null && !orderDTO.getStatus().isEmpty()){
                 orderPreparingService.prepare(orderDTO);
             } else {
